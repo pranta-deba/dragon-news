@@ -9,6 +9,7 @@
 - [react helmet async](https://www.npmjs.com/package/react-helmet-async)
 - [momentJs - for current time](https://momentjs.com/)
 - [react marquee slider](https://www.react-fast-marquee.com/)
+- [tailwindCSS buttons](https://devdojo.com/tailwindcss/buttons)
 
 
 

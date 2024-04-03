@@ -15,14 +15,14 @@ const RightNav = () => {
     <div className="space-y-4">
       <div className="flex flex-col gap-3">
         <h1 className="text-2xl font-bold">Login With</h1>
-        <a className="px-5 py-2.5 relative rounded group overflow-hidden font-medium bg-purple-50 text-primary inline-block text-center border-2 border-primary text-lg font-medium cursor-pointer">
+        <a className="px-5 py-2.5 relative rounded group overflow-hidden bg-purple-50 text-primary inline-block text-center border-2 border-primary text-lg font-medium cursor-pointer">
           <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-primary group-hover:h-full opacity-90"></span>
           <span className="relative group-hover:text-white flex justify-center items-center gap-1">
             <FaGoogle />
             Login with Google
           </span>
         </a>
-        <a className="px-5 py-2.5 relative rounded group overflow-hidden font-medium bg-purple-50 text-black inline-block text-center border-2 border-black text-lg font-medium cursor-pointer">
+        <a className="px-5 py-2.5 relative rounded group overflow-hidden bg-purple-50 text-black inline-block text-center border-2 border-black text-lg font-medium cursor-pointer">
           <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-black group-hover:h-full opacity-90"></span>
           <span className="relative group-hover:text-white flex justify-center items-center gap-1">
             <FaGithub />

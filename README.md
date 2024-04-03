@@ -10,6 +10,7 @@
 - [momentJs - for current time](https://momentjs.com/)
 - [react marquee slider](https://www.react-fast-marquee.com/)
 - [tailwindCSS buttons](https://devdojo.com/tailwindcss/buttons)
+- [react loader spinner](https://mhnpd.github.io/react-loader-spinner/)
 
 
 

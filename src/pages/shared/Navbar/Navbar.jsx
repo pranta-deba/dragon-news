@@ -13,12 +13,12 @@ const Navbar = () => {
         </NavLink>
       </h4>
       <h4>
-        <NavLink to="about" className="text-[#706F6F] text-lg font-normal capitalize">
+        <NavLink className="text-[#706F6F] text-lg font-normal capitalize">
           About
         </NavLink>
       </h4>
       <h4>
-        <NavLink to="career" className="text-[#706F6F] text-lg font-normal capitalize">
+        <NavLink  className="text-[#706F6F] text-lg font-normal capitalize">
           Career
         </NavLink>
       </h4>

@@ -9,11 +9,14 @@ import qZone1 from "../../../assets/qZone1.png";
 import qZone2 from "../../../assets/qZone2.png";
 import qZone3 from "../../../assets/qZone3.png";
 import bg1 from "../../../assets/bg1.png";
+import { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const RightNav = () => {
+  const {user} = useContext(AuthContext);
   return (
     <div className="space-y-4">
-      <div className="flex flex-col gap-3">
+      {!user&&<div className="flex flex-col gap-3">
         <h1 className="text-2xl font-bold">Login With</h1>
         <a className="px-5 py-2.5 relative rounded group overflow-hidden bg-purple-50 text-primary inline-block text-center border-2 border-primary text-lg font-medium cursor-pointer">
           <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-primary group-hover:h-full opacity-90"></span>
@@ -29,7 +32,7 @@ const RightNav = () => {
             Login with Github
           </span>
         </a>
-      </div>
+      </div>}
       <div className="flex flex-col">
         <h1 className="text-2xl font-bold mb-3">Find Us On</h1>
         <button className="text-[#706F6F] font-medium flex items-center gap-2 border p-4 rounded-t-xl">

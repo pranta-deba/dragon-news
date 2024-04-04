@@ -26,7 +26,6 @@ const News = () => {
           <h4 className="text-xl font-semibold mb-4">Dragon News</h4>
           <div className="space-y-7">
             <div className="flex flex-col space-y-4 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800 p-6">
-              <h3 className="text-xl font-bold">{news.title}</h3>
               <div className="space-y-5">
                 <img
                   src={news.thumbnail_url}

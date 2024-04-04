@@ -1,9 +1,10 @@
 import { FaRegBookmark, FaEye } from "react-icons/fa";
 import { IoShareSocialOutline } from "react-icons/io5";
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 
-const NewsCard = ({ item}) => {
-  const { author, title, details, image_url, rating, total_view } = item || {};
+const NewsCard = ({ item }) => {
+  const { _id,author, title, details, image_url, rating, total_view } = item || {};
   const { img, name, published_date } = author || {};
   const date = new Date(published_date);
   const year = date.getFullYear();
@@ -43,9 +44,7 @@ const NewsCard = ({ item}) => {
         <p className="text-sm dark:text-gray-600 max-h-44 overflow-auto scrollbar-hide">
           {details}
         </p>
-        <button className="text-[#FF8C47] font-semibold cursor-pointer mt-3">
-          Read More
-        </button>
+        <NavLink to={`/news/${_id}`} className="text-[#FF8C47] font-semibold cursor-pointer mt-3">Read More</NavLink>
       </div>
       <div className="px-4">
         <hr />

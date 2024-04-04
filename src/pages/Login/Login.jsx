@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../shared/Navbar/Navbar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -7,6 +7,7 @@ const Login = () => {
   const { signIn } = useContext(AuthContext);
   const [errorMgs, setErrorMgs] = useState({});
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmitFrom = (e) => {
     e.preventDefault();
@@ -34,7 +35,7 @@ const Login = () => {
       .then(() => {
         e.target.reset();
         setErrorMgs({});
-        navigate("/");
+        navigate(location.state ? location.state : "/");
       })
       .then((error) => {
         console.log(error);

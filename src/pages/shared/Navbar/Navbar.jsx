@@ -1,9 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import userImg from "../../../assets/user.png";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 const Navbar = () => {
   const {user,logOut} = useContext(AuthContext);
+  const navigate = useNavigate();
   const navLink = (
     <>
       <h4>
@@ -28,7 +29,10 @@ const Navbar = () => {
       <li>
         <a>{user?.email}</a>
       </li>
-      <li onClick={()=> logOut()}>
+      <li onClick={()=> {
+        logOut();
+        navigate('/login')
+      }}>
         <a>Logout</a>
       </li>
     </>

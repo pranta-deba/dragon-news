@@ -1,9 +1,8 @@
 import { FaRegBookmark, FaEye } from "react-icons/fa";
 import { IoShareSocialOutline } from "react-icons/io5";
 import PropTypes from "prop-types";
-import { DNA } from "react-loader-spinner";
 
-const NewsCard = ({ item, loader }) => {
+const NewsCard = ({ item}) => {
   const { author, title, details, image_url, rating, total_view } = item || {};
   const { img, name, published_date } = author || {};
   const date = new Date(published_date);
@@ -14,19 +13,6 @@ const NewsCard = ({ item, loader }) => {
     day < 10 ? "0" + day : day
   }`;
 
-  if (loader) {
-    return (
-      <div className="flex justify-center">
-        <DNA
-          visible={true}
-          height="80"
-          width="80"
-          ariaLabel="dna-loading"
-          wrapperClass="dna-wrapper"
-        />
-      </div>
-    );
-  }
   return (
     <div className="flex flex-col space-y-4 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
       <div className="flex justify-between space-x-4 bg-[#F3F3F3] p-4">

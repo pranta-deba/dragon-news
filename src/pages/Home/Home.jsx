@@ -1,25 +1,13 @@
-import { useEffect, useState } from "react";
 import LatestHeader from "../../components/LatestHeader/LatestHeader";
 import NewsCard from "../../components/NewsCard/NewsCard";
 import Header from "../shared/Header/Header";
 import LeftNav from "../shared/LeftNav/LeftNav";
 import Navbar from "../shared/Navbar/Navbar";
 import RightNav from "../shared/RightNav/RightNav";
+import { useLoaderData } from "react-router-dom";
 
 const Home = () => {
-  const [news, setNews] = useState([]);
-  const [loader, setLoader] = useState(false);
-  useEffect(() => {
-    const loadData = async () => {
-      const res = await fetch("/data/news.json");
-      const data = await res.json();
-      setNews(data);
-      setLoader(false);
-    };
-    setLoader(true);
-    loadData();
-  }, []);
-
+  const newsData = useLoaderData();
   return (
     <div>
       <Header />
@@ -33,7 +21,7 @@ const Home = () => {
           <h4 className="text-xl font-semibold mb-4">Dragon News Home</h4>
           <div className="space-y-7">
             {
-                news.map((item,id) => <NewsCard key={id} item={item} loader={loader}/>)
+                newsData.map((item,id) => <NewsCard key={id} item={item}/>)
             }
           </div>
         </div>

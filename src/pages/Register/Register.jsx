@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 import Navbar from "../shared/Navbar/Navbar";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
   const [errorMgs, setErrorMgs] = useState({});
 
   const handleSubmitFrom = (e) => {
@@ -21,8 +23,7 @@ const Register = () => {
         pass: false,
       });
       return;
-    }
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setErrorMgs({
         mgs: "Invalid email",
         name: false,
@@ -31,8 +32,7 @@ const Register = () => {
         pass: false,
       });
       return;
-    }
-    else if (photoUrl === "") {
+    } else if (photoUrl === "") {
       setErrorMgs({
         mgs: "Photo URL cannot be empty!",
         name: false,
@@ -41,8 +41,7 @@ const Register = () => {
         pass: false,
       });
       return;
-    }
-    else if (password.length < 6) {
+    } else if (password.length < 6) {
       setErrorMgs({
         mgs: "Password minimum 6 characters!",
         name: false,
@@ -51,8 +50,7 @@ const Register = () => {
         pass: true,
       });
       return;
-    }
-    else if (!/[A-Z]/.test(password)) {
+    } else if (!/[A-Z]/.test(password)) {
       setErrorMgs({
         mgs: "Password at least one uppercase letter!",
         name: false,
@@ -62,12 +60,16 @@ const Register = () => {
       });
       return;
     }
-   
-    e.target.reset();
-    setErrorMgs({});
+    createUser(email, password)
+      .then(() => {
+        e.target.reset();
+        setErrorMgs({});
+      })
+      .then(() => {
+        console.log("server error!");
+      });
   };
 
-  console.log(errorMgs);
   return (
     <div className="bg-[#F3F3F3]">
       <div className="max-w-[1500px] w-[90%] mx-auto py-5">
@@ -80,7 +82,10 @@ const Register = () => {
             <hr />
             <form onSubmit={(e) => handleSubmitFrom(e)}>
               <p className="text-xl font-semibold mb-2 flex items-center gap-4">
-                Name <span className="text-sm text-red-600 font-bold">{errorMgs.name ? errorMgs.mgs : ''}</span>
+                Name{" "}
+                <span className="text-sm text-red-600 font-bold">
+                  {errorMgs.name ? errorMgs.mgs : ""}
+                </span>
               </p>
               <input
                 type="text"
@@ -88,23 +93,38 @@ const Register = () => {
                 placeholder="Enter your name"
                 className="w-full bg-[#F3F3F3] p-4 text-[#9F9F9F] font-normal"
               />
-              <p className="text-xl font-semibold mb-2 flex items-center gap-4">Email address <span className="text-sm text-red-600 font-bold">{errorMgs.email ? errorMgs.mgs : ''}</span></p>
-             <input
+              <p className="text-xl font-semibold mb-2 flex items-center gap-4">
+                Email address{" "}
+                <span className="text-sm text-red-600 font-bold">
+                  {errorMgs.email ? errorMgs.mgs : ""}
+                </span>
+              </p>
+              <input
                 type="email"
                 name="email"
                 placeholder="Enter your email address"
                 className="w-full bg-[#F3F3F3] p-4 text-[#9F9F9F] font-normal"
                 required={false}
               />
-               <p className="text-xl font-semibold mb-2 flex items-center gap-4">Photo URL <span className="text-sm text-red-600 font-bold">{errorMgs.photo ? errorMgs.mgs : ''}</span></p>
-              
+              <p className="text-xl font-semibold mb-2 flex items-center gap-4">
+                Photo URL{" "}
+                <span className="text-sm text-red-600 font-bold">
+                  {errorMgs.photo ? errorMgs.mgs : ""}
+                </span>
+              </p>
+
               <input
                 type="text"
                 name="photoUrl"
                 placeholder="Enter your photo URL"
                 className="w-full bg-[#F3F3F3] p-4 text-[#9F9F9F] font-normal"
               />
-              <p className="text-xl font-semibold mb-2 flex items-center gap-4">Password <span className="text-sm text-red-600 font-bold">{errorMgs.pass ? errorMgs.mgs : ''}</span></p>
+              <p className="text-xl font-semibold mb-2 flex items-center gap-4">
+                Password{" "}
+                <span className="text-sm text-red-600 font-bold">
+                  {errorMgs.pass ? errorMgs.mgs : ""}
+                </span>
+              </p>
               <input
                 type="password"
                 name="password"
